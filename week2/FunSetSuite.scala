@@ -1,4 +1,3 @@
-package funsets
 
 import org.scalatest.FunSuite
 
