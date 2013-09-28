@@ -1,4 +1,3 @@
-
 object Main {
   def main(args: Array[String]) {
     println("Pascal's Triangle")
@@ -10,14 +9,16 @@ object Main {
   }
 
   /**
-   * Exercise 1
+   *  takes a column c and a row r, counting from 0 
+   *  returns the number at that spot in the triangle (Pascal’s triangle).
    */
   def pascal(c: Int, r: Int): Int = 
     if(c == 0 || c == r) 1
     else pascal(c-1 ,r-1) + pascal(c ,r-1)
 
   /**
-   * Exercise 2
+   *  recursive function which verifies the balancing of parentheses in a string
+   *  which we represent as a List[Char]
    */
   def balance(chars: List[Char]): Boolean = {
       
@@ -32,7 +33,14 @@ object Main {
   }
 
   /**
-   * Exercise 3
+   *  recursive function that counts how many different ways you can make change for an amount
+   *  given a list of coin denominations
+   * 
+   *  example: 
+   *  there are 3 ways to give change for 4 
+   *  if you have coins with denomiation 1 and 2
+   * 
+   *  1+1+1+1, 1+1+2, 2+2.
    */
   def countChange(money: Int, coins: List[Int]): Int = 
 	if(money == 0) 1
