@@ -1,4 +1,4 @@
-progfun-003
+progfun
 ===========
 
 Functional Programming Principles in Scala (École Polytechnique Fédérale de Lausanne)
