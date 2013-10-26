@@ -1,4 +1,3 @@
-
 /**
  * Assignment 4: Huffman coding
  *
@@ -135,8 +134,8 @@ object Huffman {
   def singleton(trees: List[CodeTree]): Boolean = trees match {
     
     case Nil => false
-	case x :: Nil => true
-	case x :: y :: ys  => false
+    case x :: Nil => true
+    case x :: y :: ys  => false
   }
 
   /**
@@ -159,9 +158,9 @@ object Huffman {
     }
 
     trees match {
-	    case Nil => Nil
-	    case x::Nil => trees
-	    case x::y::ys => insert(makeCodeTree(x, y), ys)
+	case Nil => Nil
+	case x::Nil => trees
+	case x::y::ys => insert(makeCodeTree(x, y), ys)
     }
   }
 
@@ -196,7 +195,7 @@ object Huffman {
    */
   def createCodeTree(chars: List[Char]): CodeTree = {
     
-    until(singleton, combine)(makeOrderedLeafList(times(chars)))
+      until(singleton, combine)(makeOrderedLeafList(times(chars)))
   }
 
 
@@ -257,7 +256,7 @@ object Huffman {
    */
   def encode(tree: CodeTree)(text: List[Char]): List[Bit] = {
     
-	  def encodeHelper(tree: CodeTree, char: Char, acc: List[Bit]): List[Bit] = tree match {
+     def encodeHelper(tree: CodeTree, char: Char, acc: List[Bit]): List[Bit] = tree match {
       
       	case Leaf(c,_) => if(c == char) acc else throw new RuntimeException("unkown error in encode")
       	case Fork(left, right, _, _) => {
@@ -266,15 +265,15 @@ object Huffman {
       	  else if(chars(right) contains char) encodeHelper(right, char, 1 :: acc)
       	  else throw new RuntimeException("no sub tree contains the char ~ " + char)
       	}
-      }
+     }
     
-	  def encodeIter(tree: CodeTree, text: List[Char], acc: List[Bit]): List[Bit] = text match {
+     def encodeIter(tree: CodeTree, text: List[Char], acc: List[Bit]): List[Bit] = text match {
       
       	case Nil => acc reverse
       	case x::xs => encodeIter(tree, xs, encodeHelper(tree, x, acc))
-      }
+     }
 	  
-	  encodeIter(tree, text, Nil)
+     encodeIter(tree, text, Nil)
   }
 
 
@@ -334,8 +333,8 @@ object Huffman {
    * on the two parameter code tables.
    */
   def mergeCodeTables(a: CodeTable, b: CodeTable): CodeTable = 
-	if(a isEmpty) b
-	else a ::: b
+    if(a isEmpty) b
+    else a ::: b
 
   /**
    * This function encodes `text` according to the code tree `tree`.
